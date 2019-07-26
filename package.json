@@ -4,6 +4,9 @@
   "description": "This is a project I'm creating to revise Andela's Bootcamp, Property Pro Lite Challenge 3",
   "main": "index.js",
   "scripts": {
+    "dev:start": "nodemon --exec babel-node server/src/v1/app.js",
+    "createTables": "babel-node server/src/v1/db/createTables.js",
+    "dropTables": "babel-node server/src/v1/db/dropTables.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
