@@ -36,4 +36,41 @@ const createNewUser = async (req, res) => {
   }
 };
 
-export { createNewUser };
+const authUser = async (req, res) => {
+  try {
+    const rows = await User.findByEmail(req.body.email.trim());
+  
+    bcrypt.compare(req.body.password, rows[0].password, (err, isMatch) => {
+      // res === true
+      if (err) throw err;
+      if (isMatch) {
+        return res.status(200).json({
+          status: 200,
+          token: generateToken(rows[0].id),
+          msg: 'Successfully logged in',
+          data: {
+            firstName: rows[0].first_name,
+            lastName: rows[0].last_name,
+            email: rows[0].email,
+          },
+        });
+      }
+
+      if (!isMatch) {
+        return res.status(400).json({
+          status: 400,
+          msg: 'Authentification failed incorrect password!',
+        });
+      }
+    });
+  } catch (err) {
+    res.status(500).json({
+      status: 500,
+      error: err,
+    });
+  }
+};
+
+
+export { createNewUser, authUser };
+
