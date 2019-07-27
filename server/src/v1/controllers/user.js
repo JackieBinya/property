@@ -59,7 +59,7 @@ const authUser = async (req, res) => {
       if (!isMatch) {
         return res.status(400).json({
           status: 400,
-          msg: 'Authentification failed incorrect password!',
+          error: 'Authentification failed incorrect password!',
         });
       }
     });

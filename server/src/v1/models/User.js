@@ -14,6 +14,7 @@ class User {
     const { rows } = await pool.query(text, values);
     return rows;
   }
+
 }
 
 export default User;

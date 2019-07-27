@@ -2,13 +2,11 @@ import jwt from 'jsonwebtoken';
 import User from '../models/User';
 
 const verifyNewUser = async (req, res, next) => {
-  const { email } = req.body;
-
-  const rows = await User.findByEmail(email);
+  const rows = await User.findByEmail(req.body.email.trim());
   if (rows.length) {
     return res.status(400).json({
       status: 400,
-      msg: 'Your email is already registered in the app, you are only allowed to have one account.',
+      error: 'Your email is already registered in the app, you are only allowed to have one account.',
     });
   }
 
@@ -16,7 +14,7 @@ const verifyNewUser = async (req, res, next) => {
 };
 
 const verifyExistingUser = async (req, res, next) => {
-  const rows = await User.findByEmail(req.body.email.trim());
+const rows = await User.findByEmail(req.body.email.trim());
   if (rows.length === 0) {
     return res.status(400).json({
       status: 400,
