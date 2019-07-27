@@ -8,7 +8,7 @@
     "createTables": "babel-node server/src/v1/db/createTables.js",
     "dropTables": "babel-node server/src/v1/db/dropTables.js",
     "test": "nyc mocha --require @babel/register './server/src/**/*.test.js' --timeout 1000000 --exit",
-    "coverage": "nyc npm test && nyc report --reporter=text-lcov | coveralls"
+    "coveralls": "nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
     "type": "git",
