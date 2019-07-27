@@ -10,28 +10,28 @@ const signUpValidator = (req, res, next) => {
   if (!firstName || firstName.trim() === '') {
     return res.status(400).json({
       status: 400,
-      msg: 'Please enter your first name.',
+      error: 'Please enter your first name.',
     });
   }
 
   if (!lastName || lastName.trim() === '') {
     return res.status(400).json({
       status: 400,
-      msg: 'Please enter your last name.',
+      error: 'Please enter your last name.',
     });
   }
 
   if (!email || email.trim() === '') {
     return res.status(400).json({
       status: 400,
-      msg: 'Please enter your email.',
+      error: 'Please enter your email.',
     });
   }
 
   if (!password || password.trim() === '') {
     return res.status(400).json({
       status: 400,
-      msg: 'Please enter your password.',
+      error: 'Please enter your password.',
     });
   }
 
@@ -39,13 +39,13 @@ const signUpValidator = (req, res, next) => {
   if (!emailRE.test(email)) {
     return res.status(400).json({
       status: 400,
-      msg: 'Email invalid!',
+      error: 'Email invalid!',
     });
   }
   if (password.length < 6) {
     return res.status(400).json({
-      status: 'error',
-      msg: 'Password should be no less than 6 characters long.',
+      status: 400,
+      error: 'Password should be no less than 6 characters long.',
     });
   }
   next();
@@ -64,7 +64,7 @@ const loginValidator = (req, res, next) => {
   if (!password || password.trim() === '') {
     return res.status(400).json({
       status: 400,
-      error: 'Please enter your password. to continue.',
+      error: 'Please enter your password, to continue.',
     });
   }
   next();

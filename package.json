@@ -7,7 +7,7 @@
     "dev:start": "nodemon --exec babel-node server/src/v1/app.js",
     "createTables": "babel-node server/src/v1/db/createTables.js",
     "dropTables": "babel-node server/src/v1/db/dropTables.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "nyc mocha --require @babel/register './server/src/**/*.test.js' --timeout 1000000 --exit"
   },
   "repository": {
     "type": "git",
@@ -26,20 +26,22 @@
     "@babel/node": "^7.4.5",
     "@babel/preset-env": "^7.4.5",
     "@babel/register": "^7.4.4",
-    "@babel/runtime": "^7.4.5",
+    "@babel/runtime": "^7.5.5",
     "bcryptjs": "^2.4.3",
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
     "cloudinary": "^1.14.0",
     "datauri": "^2.0.0",
-    "file-type": "^12.0.1",
-    "jsonwebtoken": "^8.5.1",
     "dotenv": "^8.0.0",
     "express": "^4.17.1",
+    "file-type": "^12.0.1",
+    "jsonwebtoken": "^8.5.1",
     "multer": "^1.4.2",
+    "nyc": "^14.1.1",
     "pg": "^7.11.0"
   },
   "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.5.5",
     "eslint": "^5.3.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.14.0",

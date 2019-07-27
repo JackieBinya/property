@@ -6,7 +6,7 @@ const verifyNewUser = async (req, res, next) => {
   if (rows.length) {
     return res.status(400).json({
       status: 400,
-      msg: 'Your email is already registered in the app, you are only allowed to have one account.',
+      error: 'Your email is already registered in the app, you are only allowed to have one account.',
     });
   }
 
