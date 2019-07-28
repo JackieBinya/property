@@ -4,6 +4,7 @@
   "description": "This is a project I'm creating to revise Andela's Bootcamp, Property Pro Lite Challenge 3",
   "main": "index.js",
   "scripts": {
+    "start": "babel-node server/src/v1/app.js",
     "dev:start": "nodemon --exec babel-node server/src/v1/app.js",
     "createTables": "babel-node server/src/v1/db/createTables.js",
     "dropTables": "babel-node server/src/v1/db/dropTables.js",
